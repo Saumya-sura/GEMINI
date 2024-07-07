@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:googleio/TextSummarizer.dart';
+import 'package:googleio/googlebot.dart';
 import 'package:googleio/splashscreen.dart';
 void main() async{
   runApp(MyAPP());
@@ -13,10 +14,14 @@ class MyAPP extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp( 
       title: 'Google IO',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: Splash(),
       routes: {
-        '/textsummarizer': (context) => Textsummarizer(),
         
+        '/textsummarizer': (context) => Textsummarizer(),
+        '/imageDecoder': (context) => ImageChat(),
       },
     );
   }

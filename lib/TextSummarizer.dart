@@ -65,6 +65,7 @@ class _TextsummarizerState extends State<Textsummarizer> {
       appBar: AppBar(
         title: Text('Text Summarizer'),
       ),
+      
       drawer: AppDrawer(),
       body: Padding(
         padding: EdgeInsets.all(20),

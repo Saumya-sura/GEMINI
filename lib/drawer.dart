@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
             title: Text("Ai bot"),
             leading: Icon(Icons.computer),
             onTap: () {
-              Navigator.pushNamed(context, '/checkliss');
+              Navigator.pushNamed(context, '/imageDecoder');
             },
           ),
           

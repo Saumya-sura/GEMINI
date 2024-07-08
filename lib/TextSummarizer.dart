@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:googleio/drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Textsummarizer extends StatefulWidget {
   const Textsummarizer({super.key});
@@ -93,7 +94,17 @@ class _TextsummarizerState extends State<Textsummarizer> {
               },
               child: Text("Summarize"),
             ),
-            scanning ? CircularProgressIndicator() : Text(summary),
+            scanning ? CircularPercentIndicator( 
+              radius: 50,
+              addAutomaticKeepAlive: true,
+              animateFromLastPercent: true,
+              animation: true,
+              animationDuration: 1200,
+              circularStrokeCap: CircularStrokeCap.round,
+              percent: 1,
+              center: Text("Summarizing"),
+              progressColor: Colors.blue,
+            ) : SelectableText(summary),
             SizedBox(
               height: 10,
             ),

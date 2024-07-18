@@ -10,7 +10,7 @@ class Splash  extends StatelessWidget {
       appBar: AppBar(
         title: Text('Google IO'),
       ),
-      drawer: AppDrawer(),
+      drawer: AppDrawer(onThemeChange: (ThemeMode ) {  },),
       body: Center( 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

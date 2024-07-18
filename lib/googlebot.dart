@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:googleio/drawer.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
@@ -110,7 +111,7 @@ class _ImageChatState extends State<ImageChat> {
           SizedBox(width: 10),
         ],
       ),
-      drawer: Drawer(),
+      drawer: AppDrawer(onThemeChange: (ThemeMode ) {  },),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(

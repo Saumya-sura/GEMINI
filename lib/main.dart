@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:googleio/TextSummarizer.dart';
-import 'package:googleio/googlebot.dart';
-import 'package:googleio/splashscreen.dart';
-void main() async{
+import 'package:googleio/drawer.dart';
+
+
+void main() {
   runApp(MyAPP());
-  await dotenv.load(fileName: "lib/.env"  );
 }
-class MyAPP extends StatelessWidget {
-  const MyAPP({super.key});
+
+class MyAPP extends StatefulWidget {
+  @override
+  _MyAPPState createState() => _MyAPPState();
+}
+
+class _MyAPPState extends State<MyAPP> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void _changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp( 
-      title: 'Google IO',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MaterialApp(
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: _themeMode,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Drawer Example'),
+        ),
+        drawer: AppDrawer(onThemeChange: _changeTheme),
+        body: Center(
+          child: Text('Home Page'),
+        ),
       ),
-      home: Splash(),
-      routes: {
-        
-        '/textsummarizer': (context) => Textsummarizer(),
-        '/imageDecoder': (context) => ImageChat(),
-      },
     );
   }
 }

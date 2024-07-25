@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:googleio/TextSummarizer.dart';
 import 'package:googleio/drawer.dart';
+import 'package:googleio/googlebot.dart';
+import 'package:googleio/splashscreen.dart';
 
-
-void main() {
-  runApp(MyAPP());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "lib/.env");
+  runApp(MYAPP());
 }
 
-class MyAPP extends StatefulWidget {
+class MYAPP extends StatefulWidget {
   @override
-  _MyAPPState createState() => _MyAPPState();
+  _MYAPPState createState() => _MYAPPState();
 }
 
-class _MyAPPState extends State<MyAPP> {
+class _MYAPPState extends State<MYAPP> {
   ThemeMode _themeMode = ThemeMode.system;
 
   void _changeTheme(ThemeMode themeMode) {
@@ -26,15 +31,21 @@ class _MyAPPState extends State<MyAPP> {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: _themeMode,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Drawer Example'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Scaffold(
+          appBar: AppBar(
+            title: Text('Drawer Example'),
+          ),
+          drawer: AppDrawer(onThemeChange: _changeTheme),
+          body: Center(
+            child: Text('Home Page'),
+          ),
         ),
-        drawer: AppDrawer(onThemeChange: _changeTheme),
-        body: Center(
-          child: Text('Home Page'),
-        ),
-      ),
+        '/splash': (context) => Splash(),
+        '/textsummarizer': (context) => Textsummarizer(),
+        '/imageDecoder': (context) => ImageChat(),
+      },
     );
   }
 }

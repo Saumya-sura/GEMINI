@@ -17,7 +17,7 @@ class AppDrawer extends StatelessWidget {
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
           DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
+            decoration: BoxDecoration(color: Colors.blue), 
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CircleAvatar(

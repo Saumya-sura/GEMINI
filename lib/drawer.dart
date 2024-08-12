@@ -41,6 +41,20 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
+            title: Text("Feedback"),
+            leading: Icon(Icons.feedback),
+            onTap: () {
+              Navigator.pushNamed(context, '/feedback');
+            },
+          ),
+          ListTile(
+            title: Text("Bot"),
+            leading: Icon(Icons.chat),
+            onTap: () {
+              Navigator.pushNamed(context, '/bot');
+            },
+          ),
+          ListTile(
             title: Text("Dark Mode"),
             leading: Icon(Icons.dark_mode),
             onTap: () {
@@ -54,6 +68,7 @@ class AppDrawer extends StatelessWidget {
               onThemeChange(ThemeMode.light);
             },
           ),
+
           
         ],
       ),

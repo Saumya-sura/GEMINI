@@ -6,6 +6,7 @@ import 'package:googleio/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'theme_notifier.dart'; // Import the ThemeNotifier
 
 class Textsummarizer extends StatefulWidget {
@@ -99,16 +100,10 @@ class _TextsummarizerState extends State<Textsummarizer> {
               child: Text("Summarize"),
             ),
             scanning
-                ? CircularPercentIndicator(
-                    radius: 50,
-                    addAutomaticKeepAlive: true,
-                    animateFromLastPercent: true,
-                    animation: true,
-                    animationDuration: 1200,
-                    circularStrokeCap: CircularStrokeCap.round,
-                    percent: 1,
-                    center: Text("Summarizing"),
-                    progressColor: Colors.blue,
+                ? Skeletonizer(
+                  enabled: true,
+                    child: Text("Scanning"),
+
                   )
                 : SelectableText(summary),
             SizedBox(
